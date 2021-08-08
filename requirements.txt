@@ -1,0 +1,11 @@
+APScheduler==3.6.3
+numpy==1.19.5
+pandas==1.2.1
+praw==7.3.0
+Pyrebase==3.0.27
+python-decouple==3.4
+requests==2.26.0
+scikit-learn==0.24.1
+torch==1.7.1
+vaderSentiment==3.3.2
+yfinance==0.1.63
