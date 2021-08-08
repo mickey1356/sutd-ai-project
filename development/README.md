@@ -36,23 +36,23 @@ Because VADER proved to be inaccurate on r/wallstreetbets post data, we decided 
 
 We demonstrate the effectiveness of our model in predicting sentiments by passing in a few sample text data.
 
-### Labelling and Cleaning Data
+###2. Labelling and Cleaning Data
 
 `data-integration.ipynb`
 
 We generate the target data for our model, as well as perform additional filtering and cleaning of the data, such that it falls in line with how we would expect the model to be deployed and run.
 
-### Model Training
+###3. Model Training
 
 `train-nn.ipynb`
 
 We make use of PyTorch to build a simple Neural Network model, and train it on the data we have previously generated.
 
-### Deployment
+###4. Deployment
 
 The scripts and notebooks would produce two files: `sentiment.pkl` and `bang_model`. These two files should be moved to deployment folder, and should be located in the same directory as the deployment script, `deploy.py`.
 
-## Additional Requirements
+##5. Additional Requirements
 
 You would need to create a Firebase database and fill up the `.env` file with the necessary credentials in order to fully run `data-integration.ipynb`.
 
