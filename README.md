@@ -17,6 +17,12 @@ Contains all the files required for developing the project from scratch
 
 Contains all the files required for deploying the project
 
+## GUI Folder
+
+Contains all the files required to build and run the website.
+
+Specific instructions for building are located in the `README.md` file within the folder.
+
 ## Website
 
 The website is hosted at: https://wsbets-5a075.web.app/
