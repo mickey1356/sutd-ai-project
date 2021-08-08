@@ -153,7 +153,7 @@ def update_reddit(month):
     df['r'] = df['i'].map(rs)
 
     # save each month to their own csv file
-    df.to_csv(f'data/filtered/{m:02d}-updated.csv')
+    df.to_csv(f'{m:02d}-updated.csv')
     print('Done')
 
 if __name__ == '__main__':
