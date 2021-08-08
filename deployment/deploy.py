@@ -625,16 +625,12 @@ def main():
     # the first runs every hour to grab data
     # we will run this every hour at the 20 minute mark (so we can get one last set of data before the model runs)
     # we give a 10 minute leeway in case of API slowdown or whatnot
-    # sched.add_job(get_data, trigger='interval', seconds=20, args=[reddit]) # to the test the function
     sched.add_job(get_data, trigger='cron', minute=20, args=[reddit])
 
     # the second job will run at 1.30pm gmt every weekday
-    # sched.add_job(run_model, trigger='interval', seconds=30) # this is to test the function
     sched.add_job(run_model, trigger='cron', day_of_week='mon,tue,wed,thu,fri', hour=13, minute=30)
-    # sched.add_job(run_model, trigger='cron', day_of_week='mon,tue,wed,thu,fri', hour=13, minute=55)
 
     # the third job will run at 10pm gmt
-    # sched.add_job(run_model, trigger='interval', seconds=30) # this is to test the function
     sched.add_job(update_model, trigger='cron', day_of_week='mon,tue,wed,thu,fri', hour=22)
 
 
