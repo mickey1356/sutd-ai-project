@@ -10,7 +10,7 @@ The deployment scripts are further detailed in the `deployment` folder.
 
 We further detail each development step below.
 
-The notebooks were run using Google Colab notebooks.
+The notebooks can be run using Google Colab notebooks (mounting required) or jupyter notebooks.
 
 ### 1. Obtaining Data
 

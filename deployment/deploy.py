@@ -109,20 +109,22 @@ def get_data(reddit):
     if (len(gme_to_add)==0):
       gme_to_add = pd.DataFrame(data, columns= ['a', 'c', 'i', 't', 'p', 'n', 's', 'r'])
 
-    #Add the sentiment analysis, pre-train
-    # analyser = SentimentIntensityAnalyzer()
-    # def sentiment_analyzer_scores(row):
-    #     score = analyser.polarity_scores(row['p'])
-    #     score = float(str(score['compound']))
-    #     if score != 0:
-    #         new_score = score * 2
-    #         if new_score > 0:
-    #             new_score += 0.5
-    #         else:
-    #             new_score -= 0.5
-    #     else:
-    #         new_score = 0
-    #     return int(new_score)
+    '''
+    Add the sentiment analysis, pre-train
+     analyser = SentimentIntensityAnalyzer()
+     def sentiment_analyzer_scores(row):
+         score = analyser.polarity_scores(row['p'])
+         score = float(str(score['compound']))
+         if score != 0:
+             new_score = score * 2
+             if new_score > 0:
+                 new_score += 0.5
+             else:
+                 new_score -= 0.5
+         else:
+             new_score = 0
+         return int(new_score)
+    '''
         
     #home-made, self train
     with open("sentiment.pkl", 'rb') as f:
@@ -165,8 +167,12 @@ def get_data(reddit):
     # df_nok = df_nok.set_index(['c'])
     # df_gme = df_gme.set_index(['c'])
 
-    print(df)
-    print('reddit: ', len(df), len(df_bb), len(df_amc), len(df_nok), len(df_gme))
+    #print(df)
+    print('Overall reddit data: ', len(df))
+    print('Reddit data (BB): ', len(df_bb))
+    print('Reddit data (AMC): ', len(df_amc))
+    print('Reddit data (NOK): ', len(df_nok))
+    print('Reddit data (GME): ', len(df_gme))
 
     print('ok')
 
@@ -392,11 +398,9 @@ def run_model():
     nok_model_data['input'] = nok_X
     gme_model_data['input'] = gme_X
         
-    print('price changes: ', bb_price_change, amc_price_change, nok_price_change, gme_price_change)
-    #model comparing the signs!
+    print('price changes: ', bb_price_change, amc_price_change, nok_price_change, gme_price_change)    
     
-    
-    #jinghan, upload to firebase, filtering by stocks still needed
+    #Upload to firebase
     firebase_config = { "apiKey": config('FIREBASE_API_KEY'),
                "authDomain": config('FIREBASE_AUTH_DOMAIN'),
                "databaseURL": config('FIREBASE_DB_URL'),
@@ -411,7 +415,6 @@ def run_model():
     gme_sentiment_count_dict = get_sentiment_count(gme_date_filtered['sentiment'].tolist())
     neg_sen1, neg_sen2, neg_sen3, pos_sen1, pos_sen2, pos_sen3 = get_top_sentiments2(date_filtered)
     
-    #in the form 2021-01-20
     today = date.today()
     #print("Today's date:", today)
     
@@ -502,7 +505,7 @@ def update_model():
     global nok_model_data
     global gme_model_data
 
-    print('updating')
+    print('Updating Model')
     
     bang_model = get_model()
     
