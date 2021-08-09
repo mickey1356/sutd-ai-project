@@ -9,6 +9,10 @@ Team members:
 - Heng Jing Han
 
 
+## Report
+
+Comprehensive description of the project and approaches considered
+
 ## Development Folder
 
 Contains all the files required for developing the project from scratch
